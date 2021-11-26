@@ -1,0 +1,21 @@
+.wrapper {
+  background: linear-gradient(217deg, #6fb9f8, #3daaf85e, #49d3fc1a, #3fd3ff00);
+  min-height: 100vh;
+  background-size: contain;
+  :global {
+    .za-cell {
+      background-color: transparent;
+      &:last-child::after {
+        border: none;
+      }
+    }
+  }
+}
+.img {
+  width: 100%;
+}
+.switch {
+  text-align: right;
+  width: 100%;
+  color: cadetblue;
+}
