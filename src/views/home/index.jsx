@@ -9,6 +9,7 @@ export default () => {
   return (
     <>
       <div className={s.wrapper}>
+        <div className={s.addIcon}><Icon type="tianjia" /></div>
         <div className={s["topAmount"]}>
           <div className={s.leftBox}>
             <div className={`${s.payout}`}>
