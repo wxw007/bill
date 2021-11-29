@@ -1,11 +1,130 @@
-.index {
-    span {
-        color: red
-    }
-    .b{
-        color: blue  
-    }
+@blue: rgb(19, 143, 245);
+@green: rgb(31, 117, 31);
+@red: crimson;
+.bold {
+  font-weight: bold;
 }
-.b{
-    color: yellow
-} 
+.wrapper {
+  background: rgb(243, 241, 241);
+  min-height: 100vh;
+  .topAmount {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: @blue;
+    padding: 10px;
+    height: 100px;
+    color: #fff;
+    display: flex;
+    box-sizing: border-box;
+
+    .leftBox {
+      font-size: 24px;
+      flex: 1;
+    }
+    .money {
+      font-size: 30px;
+    }
+    .payout {
+    }
+    .income {
+      margin-top: 10px;
+    }
+    .rightBox {
+      font-size: 12px;
+      .filterIcon {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 5px 10px;
+        border-radius: 10px;
+      }
+      .date {
+        margin-top: 25px;
+      }
+    }
+  }
+}
+.list {
+  box-sizing: border-box;
+  padding: 100px 10px 10px;
+  .item {
+    border-radius: 10px;
+    background: #fff;
+    margin-top: 10px;
+    padding-bottom: 15px;
+    overflow: hidden;
+    .itemTop {
+      height: 40px;
+      border-bottom: 1px solid rgb(230, 230, 230);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      background: rgb(255, 248, 224);
+      .date {
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .moneyInfo {
+        display: flex;
+        .moneyInfoItem {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          font-size: 14px;
+          .fIcon {
+            flex: 1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 25px;
+            height: 25px;
+            font-size: 14px;
+            color: #fff;
+            background: @blue;
+            margin-right: 5px;
+            margin-left: 10px;
+            &.green {
+              background: @green;
+            }
+            &.red {
+              background: @red;
+            }
+          }
+        }
+      }
+    }
+    .payDetailItem {
+      padding: 5px 10px;
+      border-bottom: 1px solid rgb(238, 237, 237);
+      padding-top: 1px;
+      &:last-child {
+        border: none;
+      }
+      .productRow {
+        display: flex;
+        justify-content: space-between;
+        margin: 15px 0;
+        .goodsName {
+          font-size: 16px;
+        }
+        .payout {
+          color: @green;
+          font-size: 14px;
+        }
+      }
+      .mark {
+        font-size: 14px;
+        color: rgb(182, 179, 179);
+        margin-bottom: 10px;
+      }
+      .time {
+        font-size: 14px;
+      }
+    }
+  }
+}
+.arrow {
+  font-size: 12px;
+}
