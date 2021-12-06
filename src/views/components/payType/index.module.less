@@ -1,0 +1,54 @@
+
+
+.wrapper {
+    background: #fff;
+}
+.title {
+    color:rgb(143, 142, 142);
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    
+}
+.close {
+    margin-top: 12px;
+    position: absolute;
+    right: 10px;
+
+}
+.contentBox {
+    padding: 10px;
+    background: rgb(248, 246, 246);
+    .itemBox {
+        .payType {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .typeList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .typeItem {
+                border-radius: 5px;
+                background: rgb(226, 226, 224);
+                color: #000;
+                font-size: 16px;
+                width: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 15px;
+                margin-bottom: 15px;
+                height: 40px;
+
+                &.active {
+                    background: rgb(36, 130, 252);
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
