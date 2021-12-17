@@ -1,0 +1,42 @@
+.wrapper {
+    background: #fff;
+    height: 200px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    .close-row {
+        height: 40px;
+        .close {
+            float: right;
+            font-size: 30px;
+            margin-right: 10px;
+        }
+    }
+    .filterRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+    .typeIconGroup {
+        display: flex;
+        justify-content: space-between;
+        .typeIcon {
+            width: 70px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgb(28, 135, 206);
+            color: rgb(28, 135, 206);
+            border-radius: 20px;
+            margin-right: 10px;
+            &.active {
+                background: rgb(28, 135, 206);
+                color: #fff;
+            }
+        }
+    }
+    .datePicker {
+
+    }
+}

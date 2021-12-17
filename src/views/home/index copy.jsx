@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Icon, Pull, DatePicker, Popup } from "zarm";
 import PayType from "../components/payType";
-import AddPayment from "../components/addPayment"
+import Test from "./test";
 
 import s from "./index.module.less";
 
 export default () => {
+  const ref = useRef(null);
+  console.log("ref", ref);
   document.title = "账单";
   const [billList, setBillList] = useState([1, 1, 1, 1]);
-  console.log('billList',billList)
 
   const [date, setDate] = useState("2020-11");
   const [value, setValue] = useState("");
-  const [visible, setVisible] = useState(false); 
-  const [addPaymentVisible, setAddPaymentVisible] = useState(true); 
+  const [visible, setVisible] = useState(false);
   const [selectObj, setSelectObj] = useState({
     value: "all",
     label: "全部类型",
@@ -64,61 +64,14 @@ export default () => {
     console.log("payTypeVisible", payTypeVisible);
   }, [payTypeVisible]);
 
-  // 下拉刷新、上拉加载 S
-  const REFRESH_STATE = {
-    normal: 0, // 普通
-    pull: 1, // 下拉刷新（未满足刷新条件）
-    drop: 2, // 释放立即刷新（满足刷新条件）
-    loading: 3, // 加载中
-    success: 4, // 加载成功
-    failure: 5, // 加载失败
-  };
-
-  const LOAD_STATE = {
-    normal: 0, // 普通
-    abort: 1, // 中止
-    loading: 2, // 加载中
-    success: 3, // 加载成功
-    failure: 4, // 加载失败
-    complete: 5, // 加载完成（无新数据）
-  };
-  const [refreshing, setRefreshing] = useState(REFRESH_STATE.normal);
-  const [loading, setLoading] = useState(LOAD_STATE.normal);
-  let canDo = true
-  // 模拟请求数据
-  const refreshData = () => {
-    console.log('canDo', canDo)
-    if (!canDo) return;
-    console.log('开始加载', canDo)
-    setRefreshing(REFRESH_STATE.loading);
-    canDo = false
-    setTimeout(() => {
-      console.log('刷新结束')
-      canDo = true
-      setRefreshing(REFRESH_STATE.success);
-    }, 2000);
-  };
-  // 模拟加载数据
-  const loadData = () => {
-    console.log('开始加载', canDo)
-    canDo = false
-    setLoading(REFRESH_STATE.loading);
-    setTimeout(() => {
-      canDo = true
-      console.log('加载成功')
-      let arr = [1, 2, 3];
-      let list1 = billList.concat(arr)
-      setBillList(list1)
-      setLoading(REFRESH_STATE.success);
-    }, 2000);
-  };
+  const [loading, setLoading] = useState("normal");
   return (
     <>
       {/* <Test fn={(v)=>{ console.log(v)}} /> */}
 
       <div className={s.wrapper}>
         <div className={s.addIcon}>
-          <Icon type="tianjia" onClick={() =>{setAddPaymentVisible(true)}} />
+          <Icon type="tianjia" />
         </div>
         <div className={s["topAmount"]}>
           <div className={s.leftBox}>
@@ -144,20 +97,7 @@ export default () => {
             </div>
           </div>
         </div>
-        <Pull
-          className={s.list}
-          style={{ overflow: "auto" }}
-          refresh={{
-            state: refreshing,
-            handler: refreshData,
-          }}
-          load={{
-            state: loading,
-            distance: 200,
-            handler: loadData,
-          }}
-        >
-          <div>
+        <div className={s.list}>
           {billList.map((item, index) => {
             return (
               <div className={s.item} key={index}>
@@ -185,8 +125,7 @@ export default () => {
               </div>
             );
           })}
-            </div>
-        </Pull>
+        </div>
       </div>
       <DatePicker
         visible={visible}
@@ -205,7 +144,6 @@ export default () => {
         typeSelect={typeSelect}
         setPayTypeVisible={setPayTypeVisible}
       />
-      <AddPayment visible={addPaymentVisible} setVisible={setAddPaymentVisible} />
     </>
   );
 };

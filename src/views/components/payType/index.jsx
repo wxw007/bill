@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Popup, Icon } from "zarm";
 
 import s from "./index.module.less";
 import cx from "classnames";
 export default (props) => {
+
+  const [visible, setVisible] = useState(false);
   const selectHandle = (obj) => {
-    console.log('obj', obj)
     props.typeSelect(obj);
+    setVisible(false)
+    props.setPayTypeVisible(false)
   };
+  useEffect(() => {
+    setVisible(props.visible)
+  }, [props.visible])
 
   // 支出类型
   const [payType, setPayType] = useState([
@@ -42,11 +48,11 @@ export default (props) => {
 
   return (
     <>
-      <Popup visible={props.visible} direction="bottom">
+      <Popup visible={visible} direction="bottom" onMaskClick={() => {props.setPayTypeVisible(false)}}>
         <div className={s.wrapper}>
           <div className={s.title}>
             <span>请选择类型</span>
-            <Icon type="wrong" className={s.close} />
+            <Icon onClick={()=>{props.setPayTypeVisible(false)}} type="wrong" className={s.close} />
           </div>
         </div>
         <div className={s.contentBox}>
